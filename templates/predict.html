@@ -1,0 +1,164 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Medical Insurance</title>
+
+    <style>
+        * {
+            font-family: sans-serif;
+
+        }
+
+        body {
+            background-image: url("{%static 'background.jpg' %}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .heading {
+            text-align: center;
+            color: #722620;
+        }
+
+        .result {
+            text-align: center;
+            color: #722620;
+        }
+
+        .button {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            margin-top: 22px;
+        }
+
+        .btn {
+            text-align: center;
+            width: 200px;
+            height: 50px;
+            border-radius: 6px;
+            cursor: pointer;
+            color: wheat;
+            background-color: chocolate;
+            margin-right: 130px;
+
+        }
+
+        select {
+            width: 50%;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #f1f1f1;
+            margin-left: 170px;
+            margin-top: -30px;
+        }
+
+        .main {
+
+            position: fixed;
+            left: 410px;
+            width: 700px;
+            background-color: #d4b996ff;
+            align-items: center;
+            border-radius: 4px;
+
+        }
+
+        p {
+            text-align: center;
+            color: #96351e;
+            font-size: 1.3rem;
+    
+        }
+
+        input {
+
+            align-items: center;
+            margin-left: 155px;
+            width: 50%;
+            padding: 4px 15px;
+            border-radius: 4px;
+            border-color: wheat;
+
+        }
+       
+
+        .col {
+            height: 65px;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div class="main">
+        <h1 class="heading">Please Enter the following values:</h1>
+        <form action="result" method="POST" id="form">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col" style="background-color:bisque">
+                    
+                    <p>Age:</p>
+                    <input type="number" name="n1" class="data" required id="age" min="1" max="120">
+                </div>
+                <div class="row">
+                    <div class="col" style="background-color:bisque">
+                        <p>BMI:</p>
+                        
+                            <input type="number" name="n2" class="data" required id="bmi" min="15" max="58" step="0.1">
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="background-color:bisque">
+
+                        <p>Children:</p>
+                        <input type="number" name="n3" class="data" required id="child" min="0" max="8" title="Please enter a valid number">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="background-color:bisque">
+                        <p>Gender:</p>
+                        <input type="text" name="n4" class="data" required id="gen">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="background-color:bisque">
+                        <p>Smoker:</p>
+                        <input type="text" name="n5" class="data" required >
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="background-color:bisque">
+                        <p>Region:</p>
+                        <select name="n6" class="data" required >
+                            <option value="Northeast">Northeast</option>
+                            <option value="Northwest">Northwest</option>
+                            <option value="Southeast">Southeast</option>
+                            <option value="Southwest">Southwest</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="button">
+                <input type="submit" value="PREDICT" class="btn">
+            </div>
+        </form>
+        <div class="result">
+            <h2>{{result2}}</h2>
+        </div>
+
+    </div>
+</body>
+
+</html>
